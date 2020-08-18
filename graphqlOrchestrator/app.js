@@ -144,6 +144,6 @@ const resolvers = {
 
 const server = new ApolloServer({ typeDefs, resolvers })
 
-server.listen().then(({ url }) => {
+server.listen({ port: process.env.IP || 4000 }).then(({ url }) => {
   console.log(`server running on ${ url }`)
 })
