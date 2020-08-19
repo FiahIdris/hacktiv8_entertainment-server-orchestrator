@@ -4,7 +4,6 @@ const axios = require('axios')
 const PORT_MOVIES = process.env.PORT_MOVIES || 'http://localhost:3000'
 const PORT_SERIES = process.env.PORT_SERIES || 'http://localhost:3001'
 const cors = require('cors')
-app.use(cors())
 
 
 let movie_tags = []
