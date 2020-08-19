@@ -60,7 +60,7 @@ const resolvers = {
   Query: {
     async movies() {
       try {
-        const { data } = await axios.get(`${ PORT_MOVIES }/movies`)
+        const { data } = await axios.get(`http://${ PORT_MOVIES }/movies`)
         // movie_tags = data[ 0 ].tags
         console.log("=======", 'masuk movies')
         return data
@@ -71,7 +71,7 @@ const resolvers = {
 
     async series() {
       try {
-        const { data } = await axios.get(`${ PORT_SERIES }/tv`)
+        const { data } = await axios.get(`http://${ PORT_SERIES }/tv`)
 
         // tv_tags = data.tags
         console.log("=======", 'masuk series')
@@ -84,7 +84,7 @@ const resolvers = {
 
     async dataMovie(parent, args) {
       try {
-        const { data } = await axios.get(`${ PORT_MOVIES }/movies`)
+        const { data } = await axios.get(`http://${ PORT_MOVIES }/movies`)
 
         return data.find((movie) => movie._id === args.id)
       } catch (err) {
@@ -93,7 +93,7 @@ const resolvers = {
     },
     async dataSerie(parent, args) {
       try {
-        const { data } = await axios.get(`${ PORT_SERIES }/tv`)
+        const { data } = await axios.get(`http://${ PORT_SERIES }/tv`)
 
         return data.find((serie) => serie._id === args.id)
       } catch (err) {
@@ -115,21 +115,21 @@ const resolvers = {
   Mutation: {
     async addMovie(parent, args) {
       // console.log(args)
-      const { data } = await axios.post(`${ PORT_MOVIES }/movies`, args)
+      const { data } = await axios.post(`http://${ PORT_MOVIES }/movies`, args)
       console.log('masuk add movie, args:', args, `${ PORT_MOVIES }/movies`)
 
       return data
     },
     async addSerie(parent, args) {
       // console.log(args)
-      const { data } = await axios.post(`${ PORT_SERIES }/tv`, args)
+      const { data } = await axios.post(`http://${ PORT_SERIES }/tv`, args)
 
       return data
     },
     async removeMovie(parent, args) {
       console.log('remove movie', args)
 
-      const { data } = await axios.delete(`${ PORT_MOVIES }/movies/` + args.id)
+      const { data } = await axios.delete(`http://${ PORT_MOVIES }/movies/` + args.id)
 
       // console.log('udah masuk removeMovie')
       return 'Success removing data'
@@ -137,7 +137,7 @@ const resolvers = {
     async removeSerie(parent, args) {
       // console.log('remove movie', args)
       console.log('udah masuk remove serie')
-      const { data } = await axios.delete(`${ PORT_SERIES }/tv/` + args.id)
+      const { data } = await axios.delete(`http://${ PORT_SERIES }/tv/` + args.id)
 
       return 'Success removing data'
     }
