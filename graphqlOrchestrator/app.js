@@ -3,6 +3,9 @@ const { ApolloServer, gql } = require('apollo-server')
 const axios = require('axios')
 const PORT_MOVIES = process.env.PORT_MOVIES || 'http://localhost:3000'
 const PORT_SERIES = process.env.PORT_SERIES || 'http://localhost:3001'
+const cors = require('cors')
+app.use(cors())
+
 
 let movie_tags = []
 let tv_tags = []
@@ -114,6 +117,7 @@ const resolvers = {
     async addMovie(parent, args) {
       // console.log(args)
       const { data } = await axios.post(`${ PORT_MOVIES }/movies`, args)
+      console.log('masuk add movie, args:', args, `${ PORT_MOVIES }/movies`)
 
       return data
     },
