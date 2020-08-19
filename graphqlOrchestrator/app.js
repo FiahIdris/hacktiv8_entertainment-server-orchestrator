@@ -62,7 +62,7 @@ const resolvers = {
       try {
         const { data } = await axios.get(`${ PORT_MOVIES }/movies`)
         // movie_tags = data[ 0 ].tags
-        // console.log("=======", movie_tags)
+        console.log("=======", 'masuk movies')
         return data
       } catch (err) {
         console.log(err)
@@ -74,6 +74,7 @@ const resolvers = {
         const { data } = await axios.get(`${ PORT_SERIES }/tv`)
 
         // tv_tags = data.tags
+        console.log("=======", 'masuk series')
 
         return data
       } catch (err) {
